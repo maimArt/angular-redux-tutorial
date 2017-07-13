@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 
 import {PartyplanerComponent} from './partyplaner.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
-  imports: [],
+  imports: [CommonModule],
   exports: [PartyplanerComponent],
   declarations: [PartyplanerComponent],
   providers: [],

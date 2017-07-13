@@ -12,11 +12,15 @@ import {Observable} from "rxjs/Observable";
 export class PartyplanerComponent implements OnInit {
 
   @select(['partyplaner', 'party'])
-  public readonly party: Observable<Party>;
+  public party: Observable<Party>;
+
+  @select(state => state.partyplaner.party.members.length)
+  public count: Observable<number>
 
   constructor() {
   }
 
   ngOnInit() {
+    console.log("TEST")
   }
 }

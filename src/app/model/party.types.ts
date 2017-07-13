@@ -13,7 +13,7 @@ export class Person {
 }
 
 export class Party {
-  public members: Person[];
+  public members: Person[] = [];
 
   constructor(){
     console.log("Party created")
