@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgReduxModule, DevToolsExtension, NgRedux } from '@angular-redux/store';
-import { initialState, rootReducer, } from './root.reducer';
-import {RootState} from "./root.state";
-
+import {initialState, rootReducer, RootState,} from './root.reducer';
 
 @NgModule({
   imports: [
