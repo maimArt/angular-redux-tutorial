@@ -1,5 +1,5 @@
 import { RouterState } from '@angular/router';
-import {PartyplanerState} from "../partyplaner/model/redux/partyplaner.types";
+import {PartyplanerState} from "../partyplaner/model/redux/reducer";
 
 export type RootState = {
   partyplaner: PartyplanerState,

@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import {HttpModule} from "@angular/http";
 import {StoreModule} from "./store/store.module";
 import {PartyplanerModule} from "./partyplaner/partyplaner.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, HttpModule, StoreModule, PartyplanerModule
+    BrowserModule, HttpModule, FormsModule, StoreModule, PartyplanerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
