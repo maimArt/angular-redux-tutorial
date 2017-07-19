@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core'
 import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store'
 import {InitialRootState, rootReducer, RootState} from './root.reducer'
-import {RootEpics} from './epics'
+import {RootEpics} from './root.epics'
 
 @NgModule({
   imports: [

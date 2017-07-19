@@ -12,11 +12,13 @@
           <input class="form-control" [(ngModel)]="newPartymember.surname">
           <span class="input-group-btn">
             <button class="btn btn-success" (click)="onAddMember()"
-              [disabled]="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen</button>
+                    [disabled]="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen</button>
           </span>
         </div>
         <div>
-          <button style="width: 100%; margin-top: 10px" class="btn btn-danger" (click)="onAddScoutedFriend()">Ich hab keine Freunde. Ich möchte einen Suchen</button>
+          <button style="width: 100%; margin-top: 10px" class="btn btn-danger" (click)="onAddScoutedFriend()">Ich hab
+            keine Freunde. Ich möchte einen Suchen
+          </button>
         </div>
       </div>
     </div>

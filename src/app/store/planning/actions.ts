@@ -3,7 +3,7 @@ import {dispatch} from '@angular-redux/store'
 import {Person} from '../../model/person.type'
 import {Action} from '../../utils/redux.helper'
 
-export class PartyAction implements Action<Person>{
+export class PartyAction implements Action<Person> {
   type: string | symbol
   payload: Person
 }

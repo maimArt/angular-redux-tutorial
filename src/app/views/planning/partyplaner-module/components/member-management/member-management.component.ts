@@ -37,6 +37,6 @@ export class MemberManagementComponent implements OnInit {
   }
 
   onAddScoutedFriend() {
-    this.partyActions.scoutPartymember();
+    this.partyActions.scoutPartymember()
   }
 }

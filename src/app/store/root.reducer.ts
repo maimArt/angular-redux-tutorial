@@ -9,7 +9,7 @@ export interface RootState {
 }
 
 export class InitialRootState implements RootState {
-  partyplaner:PartyplanerState = new InitialPartyplanerState();
+  partyplaner: PartyplanerState = new InitialPartyplanerState()
 }
 
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({

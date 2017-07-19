@@ -19,6 +19,4 @@ export class FriendScoutService {
     }, FriendScoutService.DELAYMS)
 
   })
-
-
 }
