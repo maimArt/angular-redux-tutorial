@@ -19,13 +19,13 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
       if (state.party.hasMember(person)) {
         return state
       } else {
-        let nextState = assign(state)
+        let nextState = assign({}, state)
         nextState.party.addMember(person)
         return nextState
       }
     case PartyActions.REMOVE_PARTYMEMBER:
       if (state.party.hasMember(person)) {
-        let nextState = assign(state)
+        let nextState = assign({}, state)
         nextState.party.removeMember(person)
         return nextState
       } else {

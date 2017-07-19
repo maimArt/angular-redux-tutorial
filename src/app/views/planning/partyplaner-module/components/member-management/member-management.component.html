@@ -12,7 +12,7 @@
           <input class="form-control" [(ngModel)]="newPartymember.surname">
           <span class="input-group-btn">
       <button class="btn btn-success" (click)="onAddMember()"
-              ng-disabled="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen</button>
+              [disabled]="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen</button>
         </span>
         </div>
       </div>
