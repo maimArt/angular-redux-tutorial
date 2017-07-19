@@ -1,6 +1,6 @@
 import {FriendScoutService} from './friendscout.service'
-import {Person} from '../../model/person.type'
 import {Observable} from 'rxjs/Observable'
+import {Person} from '../../../model/person.type'
 
 describe('FriendScoutService', () => {
   let service: FriendScoutService
@@ -20,7 +20,7 @@ describe('FriendScoutService', () => {
     });
   });
 
-  it('should find friend', (done) => {
+  it('should find friends after some time', (done) => {
     console.info('Test starts');
     expect(lastFriend).toBeTruthy();
     done();

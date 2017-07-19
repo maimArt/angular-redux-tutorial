@@ -6,7 +6,6 @@ import {HttpModule} from '@angular/http'
 import {StoreModule} from './store/store.module'
 import {PartyplanerModule} from './views/planning/partyplaner-module/partyplaner.module'
 import {FormsModule} from '@angular/forms'
-import {FriendScoutService} from './services/planning/friendscout.service'
 
 @NgModule({
   declarations: [

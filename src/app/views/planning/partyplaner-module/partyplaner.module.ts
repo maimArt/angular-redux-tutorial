@@ -4,14 +4,14 @@ import {MemberManagementComponent} from './components/member-management/member-m
 import {CommonModule} from '@angular/common'
 import {FormsModule} from '@angular/forms'
 import {PartyActions} from '../../../store/planning/actions'
-import {FriendScoutService} from '../../../services/planning/friendscout.service'
 import {PartyplanningEpics} from '../../../store/planning/epics'
+import {FriendscoutServiceModule} from '../../../services/planning/friendscout-service/friendscout-service.module'
 
 @NgModule({
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FriendscoutServiceModule],
   exports: [MemberManagementComponent],
   declarations: [MemberManagementComponent],
-  providers: [PartyActions, FriendScoutService, PartyplanningEpics]
+  providers: [PartyActions, PartyplanningEpics]
 })
 export class PartyplanerModule {
 }
