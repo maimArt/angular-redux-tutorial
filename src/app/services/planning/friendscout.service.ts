@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs/Observable'
-import {Person} from '../../../model/person.type'
+import {Person} from '../../model/person.type'
 import {sampleNames} from './samplenames'
 
 @Injectable()

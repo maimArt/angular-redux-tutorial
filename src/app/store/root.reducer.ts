@@ -1,15 +1,15 @@
 import {combineReducers, Reducer} from 'redux'
 import {routerReducer} from '@angular-redux/router'
-import {INITIAL_PARTYPLANER_STATE, partyplanerReducer, PartyplanerState} from '../partyplaner/subStore/reducer'
+import {InitialPartyplanerState, partyplanerReducer, PartyplanerState} from './planning/reducer'
 import {RouterState} from '@angular/router'
 
-export type RootState = {
-  partyplaner: PartyplanerState,
-  router?: RouterState,
+export interface RootState {
+  partyplaner: PartyplanerState;
+  router?: RouterState;
 }
 
-export const initialState: RootState = {
-  partyplaner: INITIAL_PARTYPLANER_STATE
+export class InitialRootState implements RootState {
+  partyplaner:PartyplanerState = new InitialPartyplanerState();
 }
 
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({

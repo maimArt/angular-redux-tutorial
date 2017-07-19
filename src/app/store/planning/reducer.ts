@@ -8,11 +8,11 @@ export interface PartyplanerState {
   party: Party
 }
 
-export const INITIAL_PARTYPLANER_STATE: PartyplanerState = {
-  party: new Party()
+export class InitialPartyplanerState implements PartyplanerState {
+  party: Party = new Party();
 }
 
-export const partyplanerReducer: Reducer<PartyplanerState> = (state: PartyplanerState = INITIAL_PARTYPLANER_STATE, action: PartyAction) => {
+export const partyplanerReducer: Reducer<PartyplanerState> = (state: PartyplanerState = new InitialPartyplanerState(), action: PartyAction) => {
   let person: Person = action.payload
   switch (action.type) {
     case PartyActions.ADD_PARTYMEMBER:
