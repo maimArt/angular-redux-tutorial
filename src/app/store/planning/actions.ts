@@ -12,6 +12,7 @@ export class PartyAction implements Action<Person>{
 export class PartyActions {
   static readonly ADD_PARTYMEMBER = 'ADD_PARTYMEMBER'
   static readonly REMOVE_PARTYMEMBER = 'REMOVE_PARTYMEMBER'
+  static readonly SCOUT_PARTYMEMBER = 'SCOUT_PARTYMEMBER'
 
   @dispatch()
   addPartymember = (person: Person): PartyAction => ({
@@ -23,5 +24,11 @@ export class PartyActions {
   removePartymember = (person: Person): PartyAction => ({
     type: PartyActions.REMOVE_PARTYMEMBER,
     payload: person
+  })
+
+  @dispatch()
+  scoutPartymember = (): PartyAction => ({
+    type: PartyActions.SCOUT_PARTYMEMBER,
+    payload: null
   })
 }

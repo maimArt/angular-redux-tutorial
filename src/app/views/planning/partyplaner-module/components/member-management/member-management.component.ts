@@ -35,4 +35,8 @@ export class MemberManagementComponent implements OnInit {
   onRemoveMember(person: Person) {
     this.partyActions.removePartymember(person)
   }
+
+  onAddScoutedFriend() {
+    this.partyActions.scoutPartymember();
+  }
 }
