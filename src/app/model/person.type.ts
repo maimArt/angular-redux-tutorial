@@ -1,14 +1,14 @@
-export class Person{
-  prename: string;
-  surname: string;
+export class Person {
+  prename: string
+  surname: string
 
-  constructor(prename: string, surname: string){
-    this.prename = prename;
-    this.surname = surname;
+  constructor(prename: string, surname: string) {
+    this.prename = prename
+    this.surname = surname
   }
 
   public equals(anotherPerson: Person) {
-      return anotherPerson != null && this.surname === anotherPerson.surname && this.prename === anotherPerson.prename;
+    return anotherPerson != null && this.surname === anotherPerson.surname && this.prename === anotherPerson.prename
   }
 }
 

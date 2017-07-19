@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser'
+import {NgModule} from '@angular/core'
 
-import { AppComponent } from './app.component';
-import {HttpModule} from "@angular/http";
-import {StoreModule} from "./store/store.module";
-import {PartyplanerModule} from "./partyplaner/partyplaner.module";
-import {FormsModule} from "@angular/forms";
+import {AppComponent} from './app.component'
+import {HttpModule} from '@angular/http'
+import {StoreModule} from './store/store.module'
+import {PartyplanerModule} from './partyplaner/partyplaner.module'
+import {FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,4 +17,5 @@ import {FormsModule} from "@angular/forms";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
