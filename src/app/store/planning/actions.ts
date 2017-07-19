@@ -1,9 +1,12 @@
 import {Injectable} from '@angular/core'
-import {FluxStandardAction} from 'flux-standard-action'
 import {dispatch} from '@angular-redux/store'
 import {Person} from '../../model/person.type'
+import {Action} from '../../utils/redux.helper'
 
-export type PartyAction = FluxStandardAction<Person, any>;
+export class PartyAction implements Action<Person>{
+  type: string | symbol
+  payload: Person
+}
 
 @Injectable()
 export class PartyActions {
@@ -13,14 +16,12 @@ export class PartyActions {
   @dispatch()
   addPartymember = (person: Person): PartyAction => ({
     type: PartyActions.ADD_PARTYMEMBER,
-    meta: null,
     payload: person
   })
 
   @dispatch()
   removePartymember = (person: Person): PartyAction => ({
     type: PartyActions.REMOVE_PARTYMEMBER,
-    meta: null,
     payload: person
   })
 }
