@@ -1,4 +1,4 @@
-export var sampleNames = [
+export const sampleNames = [
   {'prename': 'Taylor', 'surname': 'Walsh'},
   {'prename': 'Risa', 'surname': 'Maddox'},
   {'prename': 'Minerva', 'surname': 'Hopper'},
