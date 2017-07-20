@@ -8,8 +8,9 @@ export interface RootState {
   router?: RouterState;
 }
 
-export class InitialRootState implements RootState {
-  partyplaner: PartyplanerState = new InitialPartyplanerState()
+/* root state should initialy be a plain object */
+export const INITIAL_ROOTSTATE = {
+  partyplaner: new InitialPartyplanerState()
 }
 
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({
