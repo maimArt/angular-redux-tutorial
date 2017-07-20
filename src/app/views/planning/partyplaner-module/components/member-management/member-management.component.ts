@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable'
 import {PartyActions} from '../../../../../store/planning/actions'
 import {Party} from '../../../../../model/party.type'
 import {Person} from '../../../../../model/person.type'
+import {getParty} from '../../../../../store/planning/selectors'
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ import {Person} from '../../../../../model/person.type'
 
 export class MemberManagementComponent implements OnInit {
 
-  @select(['partyplaner', 'party'])
+  @select(getParty)
   public party: Observable<Party>
 
   @Input()
