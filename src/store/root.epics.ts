@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {PartyplanningEpics} from '../_planning/store/epics'
+import {PartyplanningEpics} from './party/epics'
 
 @Injectable()
 export class RootEpics {
