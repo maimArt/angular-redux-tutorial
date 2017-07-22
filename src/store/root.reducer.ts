@@ -1,6 +1,6 @@
 import {combineReducers, Reducer} from 'redux'
 import {routerReducer} from '@angular-redux/router'
-import {InitialPartyplanerState, partyplanerReducer, PartyplanerState} from './planning/reducer'
+import {InitialPartyplanerState, partyplanerReducer, PartyplanerState} from './party/reducer'
 import {RouterState} from '@angular/router'
 
 export interface RootState {

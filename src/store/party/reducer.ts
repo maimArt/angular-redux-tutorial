@@ -1,8 +1,8 @@
 import {Reducer} from 'redux'
 import {PartyAction, PartyActions} from './actions'
-import {Person} from '../../model/person.type'
-import {Party} from '../../model/party.type'
-import {deepCopy} from '../../utils/redux.helper'
+import {Person} from '../../model/data/person.type'
+import {Party} from '../../model/data/party.type'
+import {deepCopy} from '../utils/redux.helper'
 
 export interface PartyplanerState {
   party: Party

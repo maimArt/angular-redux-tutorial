@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {dispatch} from '@angular-redux/store'
-import {Person} from '../../model/person.type'
-import {Action} from '../../utils/redux.helper'
+import {Person} from '../../model/data/person.type'
+import {Action} from '../utils/redux.helper'
 
 export class PartyAction implements Action<Person> {
   type: string | symbol

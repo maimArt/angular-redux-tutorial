@@ -1,5 +1,5 @@
 import {RootState} from '../root.reducer'
-import {Party} from '../../model/party.type'
+import {Party} from '../../model/data/party.type'
 import {PartyplanerState} from './reducer'
 
 function getPartyplanerState(rootState: RootState): PartyplanerState {
