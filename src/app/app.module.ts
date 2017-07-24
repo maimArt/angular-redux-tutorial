@@ -6,13 +6,15 @@ import {HttpModule} from '@angular/http'
 import {StoreModule} from '../store/store.module'
 import {PartyplanerModule} from './planning/partyplaner/partyplaner.module'
 import {FormsModule} from '@angular/forms'
+import {AppRoutingModule} from './app-routing.module';
+import {SimulationModule} from './simulation/simulation.module'
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, StoreModule, PartyplanerModule
+    AppRoutingModule, BrowserModule, HttpModule, FormsModule, StoreModule, PartyplanerModule, SimulationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

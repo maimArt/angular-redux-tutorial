@@ -8,12 +8,12 @@ import {PartyActions} from '../../../../store/party/actions'
 
 @Component({
   moduleId: module.id,
-  selector: 'member-management',
-  templateUrl: './member-management.component.html',
-  styleUrls: ['./member-management.component.css']
+  selector: 'member-management-view',
+  templateUrl: './member-management-view.component.html',
+  styleUrls: ['./member-management-view.component.css']
 })
 
-export class MemberManagementComponent implements OnInit {
+export class MemberManagementViewComponent implements OnInit {
 
   @select(getParty)
   public party: Observable<Party>

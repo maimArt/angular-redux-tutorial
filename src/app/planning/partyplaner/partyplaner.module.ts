@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core'
-import {MemberManagementComponent} from './member-management/member-management.component'
+import {MemberManagementViewComponent} from './member-management-view/member-management-view.component'
 import {CommonModule} from '@angular/common'
 import {FormsModule} from '@angular/forms'
 import {PartyActions} from '../../../store/party/actions'
@@ -8,8 +8,8 @@ import {FriendscoutServiceModule} from '../../../model/services/social/friendsco
 
 @NgModule({
   imports: [CommonModule, FormsModule, FriendscoutServiceModule],
-  exports: [MemberManagementComponent],
-  declarations: [MemberManagementComponent],
+  exports: [MemberManagementViewComponent],
+  declarations: [MemberManagementViewComponent],
   providers: [PartyActions, PartyplanningEpics]
 })
 export class PartyplanerModule {

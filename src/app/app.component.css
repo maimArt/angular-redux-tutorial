@@ -1,0 +1,8 @@
+:host >>> .moduleContainer {
+  padding: 0 20px;
+}
+
+:host >>> .moduleContent {
+  width: 800px;
+  margin: 30px 10px 0px 10px;
+}
