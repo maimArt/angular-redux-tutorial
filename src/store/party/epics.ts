@@ -4,6 +4,8 @@ import {PartyAction, PartyActions} from './actions'
 import {createEpicMiddleware, Epic} from 'redux-observable'
 import {PartyplanerState} from './reducer'
 import 'rxjs/add/operator/catch'
+import {Observable} from 'rxjs/Observable'
+import 'rxjs/add/observable/of'
 
 @Injectable()
 export class PartyplanningEpics {
@@ -19,5 +21,9 @@ export class PartyplanningEpics {
       .ofType(PartyActions.SCOUT_PARTYMEMBER)
       .switchMap(() => this.service.findFriend())
       .map(person => this.partyActions.addPartymember(person))
+      .catch((error) => {
+        console.error(error);
+        return null;
+      })
   }
 }
