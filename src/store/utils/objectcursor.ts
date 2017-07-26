@@ -10,10 +10,10 @@ export namespace Cursor {
       this.rootObject = root
     }
 
-    public to<K extends keyof T>(key: K): CursorNode<T, T[K]> {
+    public to<K extends keyof T>(key: K): ObjectCursorNode<T, T[K]> {
       let node = this.rootObject[key]
       this.appendToPath(key)
-      return new CursorNode(this, node)
+      return new ObjectCursorNode(this, node)
     }
 
     public appendToPath(subpath: string) {
@@ -29,7 +29,7 @@ export namespace Cursor {
     }
   }
 
-  class CursorNode<T, N> {
+  class ObjectCursorNode<T, N> {
     private root: ObjectCursor<T>
     private node: N;
 
@@ -38,13 +38,13 @@ export namespace Cursor {
       this.node = node
     }
 
-    to<K extends keyof N>(key: K): CursorNode<T, N[K]> {
+    to<K extends keyof N>(key: K): ObjectCursorNode<T, N[K]> {
       var branch = this.node[key]
       this.root.appendToPath(key)
-      return new CursorNode(this.root, branch)
+      return new ObjectCursorNode(this.root, branch)
     }
 
-    set<K extends keyof N>(value): CursorNode<T, N> {
+    set<K extends keyof N>(value): ObjectCursorNode<T, N> {
       _.set(this.root.getObject(), this.root.getPath(), value)
       return this
     }
