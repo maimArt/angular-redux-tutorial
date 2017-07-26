@@ -2,15 +2,15 @@ import * as _ from 'lodash'
 
 export namespace Cursor {
 
-  export class ObjectCursor<T> {
-    private rootObject: T
+  export class ObjectCursor<RT> {
+    private rootObject: RT
     private path: string = ''
 
-    constructor(root: T) {
+    constructor(root: RT) {
       this.rootObject = root
     }
 
-    public to<K extends keyof T>(key: K): ObjectCursorNode<T, T[K]> {
+    public to<K extends keyof RT>(key: K): ObjectCursorNode<RT, RT[K]> {
       let node = this.rootObject[key]
       this.appendToPath(key)
       return new ObjectCursorNode(this, node)
@@ -24,29 +24,39 @@ export namespace Cursor {
       return this.path
     }
 
-    public getObject(): T {
+    public getObject(): RT {
       return this.rootObject
     }
   }
 
-  class ObjectCursorNode<T, N> {
-    private root: ObjectCursor<T>
+  // RT --> RootType
+  // N --> Node Type
+  class ObjectCursorNode<RT, N> {
+    private root: ObjectCursor<RT>
     private node: N;
 
-    constructor(root: ObjectCursor<T>, node: N) {
+    constructor(root: ObjectCursor<RT>, node: N) {
       this.root = root
       this.node = node
     }
 
-    to<K extends keyof N>(key: K): ObjectCursorNode<T, N[K]> {
+    to<K extends keyof N>(key: K): ObjectCursorNode<RT, N[K]> {
       var branch = this.node[key]
       this.root.appendToPath(key)
       return new ObjectCursorNode(this.root, branch)
     }
 
-    set<K extends keyof N>(value): ObjectCursorNode<T, N> {
+    /* type safe setter */
+    set(value:N): ObjectCursorNode<RT, N> {
       _.set(this.root.getObject(), this.root.getPath(), value)
-      return this
+      return this;
+    }
+
+    setByFunction(setFunction:(N) => N): ObjectCursorNode<RT, N> {
+      let currentvalue = _.get(this.root.getObject(), this.root.getPath());
+      let value = setFunction(currentvalue);
+      _.set(this.root.getObject(), this.root.getPath(), value)
+      return this;
     }
 
     getObject() {
