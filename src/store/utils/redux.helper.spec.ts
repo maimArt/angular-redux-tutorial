@@ -1,21 +1,18 @@
-import {RootState} from '../root.reducer'
-import {InitialPartyplanerState} from '../party/reducer'
-import {Traversable} from './redux.helper'
-import {Party} from '../../model/data/party.type'
+import {INITIAL_ROOTSTATE, RootState} from '../root.reducer'
 import {Person} from '../../model/data/person.type'
+import {Cursor} from './objectcursor'
+import ClonedObjectCursor = Cursor.ClonedObjectCursor
 
 describe('Traversable', () => {
 
 
 
   it('Should work', () => {
-    let rootState:RootState = {
-      partyplaner: new InitialPartyplanerState()
-    }
+    let rootState = INITIAL_ROOTSTATE;
 
-    let traversable:Traversable<RootState> = new Traversable(rootState);
-    let child = traversable.child('partyplaner').toChild('party');
-    child.clone().addMember(new Person("Horst", "Horsti"));
-    let nextState = traversable.get();
+    //rootState.partyplaner.party.members = [];
+    var nextPersons:Array<Person> = [new Person("kljl","test")];
+    let manipulatedRoot = new ClonedObjectCursor(rootState).to("partyplaner").to("party").to("members").set(nextPersons).getObject();
+
   })
 })

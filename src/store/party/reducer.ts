@@ -20,12 +20,11 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
       if (personIsInList(state.party.members, person)) {
         return state
       } else {
-        return Immutable.setIn(state, ['party', 'members'], [...state.party.members, person]);
+        return Immutable.setIn(state, ['party', 'member'], [...state.party.members, person]);
       }
     case PartyActions.REMOVE_PARTYMEMBER:
       if (personIsInList(state.party.members, person)) {
-        let nextState = Immutable.updateIn(state, ['party', 'members'], removePersonFromList, person);
-        return nextState;
+        return Immutable.updateIn(state, ['party', 'members'], removePersonFromList, person);
       } else {
         return state
       }
