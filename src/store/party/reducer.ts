@@ -3,9 +3,7 @@ import {PartyAction, PartyActions} from './actions'
 import {Person} from '../../model/data/person.type'
 import {Party} from '../../model/data/party.type'
 import {personIsInList, personsAreEqual} from './selectors'
-import {Cursor} from '../utils/objectcursor'
-import ClonedObjectCursor = Cursor.ClonedObjectCursor
-//import {Immutable} from 'seamless-immutable'
+import {StateProducer} from 'typescript-redux-helper'
 
 export interface PartyplanerState {
   party: Party
@@ -24,14 +22,14 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
       } else {
         // DEMO try to modify state
         //state.party.members = [...state.party.members, person];
-        return new ClonedObjectCursor(state).to("party").to("members").set([...state.party.members, person]).getObject();
-        //return Immutable.setIn(state, ['party', 'member'],[...state.party.members, person] );
+        //return new ClonedObjectCursor(state).to("party").to("members").set([...state.party.members, person]).getObject();
+        return StateProducer.load(state).switchTo("party").switchTo("members").setByFunction((members) => [...members, person]).produce();
       }
     case PartyActions.REMOVE_PARTYMEMBER:
       if (personIsInList(state.party.members, person)) {
         //return new ClonedObjectCursor(state).to("party").to("members").set(state.party.members.filter((member)=> !personsAreEqual(member, person))).getObject();
-        return new ClonedObjectCursor(state).to("party").to("members").setByFunction((members) => members.filter((member)=> !personsAreEqual(member, person))).getObject();
-        //return Immutable.updateIn(state, ['party', 'members'], removePersonFromList, person);
+        //return new ClonedObjectCursor(state).to("party").to("members").setByFunction((members) => members.filter((member)=> !personsAreEqual(member, person))).getObject();
+        return StateProducer.load(state).switchTo("party").switchTo("members").setByFunction((members) => members.filter((member) => !personsAreEqual(member, person))).produce();
       } else {
         return state
       }

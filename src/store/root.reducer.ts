@@ -2,7 +2,6 @@ import {combineReducers, Reducer} from 'redux'
 import {routerReducer} from '@angular-redux/router'
 import {InitialPartyplanerState, partyplanerReducer, PartyplanerState} from './party/reducer'
 import {RouterState} from '@angular/router'
-import {deepFreeze} from './utils/redux.helper'
 
 export interface RootState {
   partyplaner: PartyplanerState;
