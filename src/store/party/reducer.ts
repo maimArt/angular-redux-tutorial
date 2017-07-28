@@ -20,15 +20,10 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
       if (personIsInList(state.party.members, person)) {
         return state
       } else {
-        // DEMO try to modify state
-        //state.party.members = [...state.party.members, person];
-        //return new ClonedObjectCursor(state).to("party").to("members").set([...state.party.members, person]).getObject();
         return StateProducer.load(state).switchTo("party").switchTo("members").setByFunction((members) => [...members, person]).produce();
       }
     case PartyActions.REMOVE_PARTYMEMBER:
       if (personIsInList(state.party.members, person)) {
-        //return new ClonedObjectCursor(state).to("party").to("members").set(state.party.members.filter((member)=> !personsAreEqual(member, person))).getObject();
-        //return new ClonedObjectCursor(state).to("party").to("members").setByFunction((members) => members.filter((member)=> !personsAreEqual(member, person))).getObject();
         return StateProducer.load(state).switchTo("party").switchTo("members").setByFunction((members) => members.filter((member) => !personsAreEqual(member, person))).produce();
       } else {
         return state
