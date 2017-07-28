@@ -29,7 +29,6 @@
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
     "rxjs": "^5.1.0",
-    "seamless-immutable": "^7.1.2",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -51,6 +50,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "~2.3.3",
+    "typescript-redux-helper": "^0.1.2"
   }
 }

@@ -23,7 +23,7 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
         return state
       } else {
         // DEMO try to modify state
-        // state.party.members = [...state.party.members, person];
+        //state.party.members = [...state.party.members, person];
         return new ClonedObjectCursor(state).to("party").to("members").set([...state.party.members, person]).getObject();
         //return Immutable.setIn(state, ['party', 'member'],[...state.party.members, person] );
       }

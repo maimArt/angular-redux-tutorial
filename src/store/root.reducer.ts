@@ -10,9 +10,9 @@ export interface RootState {
 }
 
 /* root state should initialy be a plain object */
-export const INITIAL_ROOTSTATE = deepFreeze({
+export const INITIAL_ROOTSTATE = {
   partyplaner: new InitialPartyplanerState()
-});
+};
 
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   partyplaner: partyplanerReducer,
