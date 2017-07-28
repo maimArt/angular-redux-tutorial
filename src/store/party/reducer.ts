@@ -32,7 +32,3 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
 
   return state
 }
-
-function removePersonFromList(persons: Person[], person: Person) {
-  return persons.filter((member) => !personsAreEqual(member, person));
-}
