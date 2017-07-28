@@ -29,6 +29,7 @@
     "redux": "^3.7.2",
     "redux-observable": "^0.14.1",
     "rxjs": "^5.1.0",
+    "typescript-immutable-replicator": "^0.1.1",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
