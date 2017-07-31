@@ -2,7 +2,7 @@ import {isDevMode, NgModule} from '@angular/core'
 import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store'
 import {INITIAL_ROOTSTATE, rootReducer, RootState} from './root.reducer'
 import {RootEpics} from './root.epics'
-import {deepFreeze} from 'typescript-immutable-replicator'
+import {deepFreeze} from 'typescript-immutable-helper'
 
 @NgModule({
   imports: [
