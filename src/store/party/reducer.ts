@@ -3,7 +3,7 @@ import {PartyAction, PartyActions} from './actions'
 import {Person} from '../../model/data/person.type'
 import {Party} from '../../model/data/party.type'
 import {personIsInList, personsAreEqual} from './selectors'
-import {Replicator} from 'typescript-immutable-replicator'
+import {ReplicationBuilder} from 'typescript-immutable-replicator'
 
 export interface PartyplanerState {
   party: Party
@@ -20,11 +20,11 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
       if (personIsInList(state.party.members, person)) {
         return state
       } else {
-        return Replicator.forObject(state).child("party").modify("members").by((members) => [...members, person]).replicate();
+      return ReplicationBuilder.forObject(state).getChild("party").modify("members").by((members) => [...members, person]).build();
       }
     case PartyActions.REMOVE_PARTYMEMBER:
       if (personIsInList(state.party.members, person)) {
-        return Replicator.forObject(state).child("party").modify("members").by((members) => members.filter((member) => !personsAreEqual(member, person))).replicate();
+        return ReplicationBuilder.forObject(state).getChild("party").modify("members").by((members) => members.filter((member) => !personsAreEqual(member, person))).build();
       } else {
         return state
       }
