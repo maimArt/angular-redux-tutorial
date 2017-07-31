@@ -1,7 +1,7 @@
-import {RootState} from '../root.reducer'
-import {Party} from '../../model/data/party.type'
+import {RootState} from '../../shared/store/root.reducer'
+import {Party} from '../../../model/data/party.type'
 import {PartyplanerState} from './reducer'
-import {Person} from '../../model/data/person.type'
+import {Person} from '../../../model/data/person.type'
 
 function getPartyplanerState(rootState: RootState): PartyplanerState {
   return rootState.partyplaner;

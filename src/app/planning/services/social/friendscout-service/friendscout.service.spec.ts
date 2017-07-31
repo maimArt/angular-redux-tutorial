@@ -1,6 +1,6 @@
 import {FriendScoutService} from './friendscout.service'
 import {Observable} from 'rxjs/Observable'
-import {Person} from '../../../data/person.type'
+import {Person} from '../../../../../model/data/person.type'
 import {async} from '@angular/core/testing'
 
 describe('FriendScoutService', () => {

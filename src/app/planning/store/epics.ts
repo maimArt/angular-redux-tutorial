@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import {FriendScoutService} from '../../model/services/social/friendscout-service/friendscout.service'
+import {FriendScoutService} from '../services/social/friendscout-service/friendscout.service'
 import {PartyAction, PartyActions} from './actions'
 import {createEpicMiddleware, Epic} from 'redux-observable'
 import {PartyplanerState} from './reducer'

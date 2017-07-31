@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {dispatch} from '@angular-redux/store'
-import {Person} from '../../model/data/person.type'
-import {Action} from '../action'
+import {Person} from '../../../model/data/person.type'
+import {Action} from '../../shared/store/root.action'
 
 export interface PartyAction extends Action<Person> {}
 

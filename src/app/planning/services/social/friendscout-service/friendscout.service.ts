@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs/Observable'
 import {sampleNames} from './samplenames'
-import {Person} from '../../../data/person.type'
+import {Person} from '../../../../../model/data/person.type'
 
 @Injectable()
 export class FriendScoutService {

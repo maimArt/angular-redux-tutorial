@@ -1,7 +1,7 @@
 import {Reducer} from 'redux'
 import {PartyAction, PartyActions} from './actions'
-import {Person} from '../../model/data/person.type'
-import {Party} from '../../model/data/party.type'
+import {Person} from '../../../model/data/person.type'
+import {Party} from '../../../model/data/party.type'
 import {personIsInList, personsAreEqual} from './selectors'
 import {ReplicationBuilder} from 'typescript-immutable-replicator'
 

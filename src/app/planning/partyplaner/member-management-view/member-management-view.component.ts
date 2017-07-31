@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {select} from '@angular-redux/store'
 import {Observable} from 'rxjs/Observable'
-import {getParty} from '../../../../store/party/selectors'
+import {getParty} from '../../store/selectors'
 import {Party} from '../../../../model/data/party.type'
 import {Person} from '../../../../model/data/person.type'
-import {PartyActions} from '../../../../store/party/actions'
+import {PartyActions} from '../../store/actions'
 
 @Component({
   moduleId: module.id,
