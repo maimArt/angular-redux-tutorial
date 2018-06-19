@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core'
 import {FriendScoutService} from '../services/social/friendscout-service/friendscout.service'
 import {PartyAction, PartyActions} from './actions'
-import {createEpicMiddleware, Epic} from 'redux-observable'
-import {PartyplanerState} from './reducer'
-import 'rxjs/add/operator/catch'
-import {Observable} from 'rxjs/Observable'
-import 'rxjs/add/observable/of'
+import {combineEpics, createEpicMiddleware, Epic, ofType} from 'redux-observable'
+import {catchError, map, mergeMap, switchMap} from 'rxjs/operators';
+import {of} from 'rxjs/internal/observable/of';
 
 @Injectable()
 export class PartyplanningEpics {
@@ -13,17 +11,20 @@ export class PartyplanningEpics {
   }
 
   public createEpic() {
-    return createEpicMiddleware(this.createAddScoutedFriendEpic())
+    return combineEpics(this.createAddScoutedFriendEpic());
   }
 
-  private createAddScoutedFriendEpic(): Epic<PartyAction, PartyplanerState> {
-    return (action$, store) => action$
-      .ofType(PartyActions.SCOUT_PARTYMEMBER)
-      .switchMap(() => this.service.findFriend())
-      .map(person => this.partyActions.addPartymember(person))
-      .catch((error) => {
-        console.error(error);
-        return null;
-      })
+  public createAddScoutedFriendEpic(): Epic<PartyAction> {
+    return (action$, state$) => action$.pipe(
+      ofType(PartyActions.SCOUT_PARTYMEMBER),
+      switchMap(() =>
+        this.service.findFriend().pipe(
+          map(person => this.partyActions.addPartymember(person)),
+          catchError((error) => {
+            console.error(error);
+            return of({type: 'ERROR-ACTION'});
+          }))
+      ));
   }
+
 }

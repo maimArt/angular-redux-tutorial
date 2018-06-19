@@ -7,21 +7,21 @@ export interface PartyAction extends Action<Person> {}
 
 @Injectable()
 export class PartyActions {
-  static readonly ADD_PARTYMEMBER = 'ADD_PARTYMEMBER'
-  static readonly REMOVE_PARTYMEMBER = 'REMOVE_PARTYMEMBER'
-  static readonly SCOUT_PARTYMEMBER = 'SCOUT_PARTYMEMBER'
+  static readonly ADD_PARTYMEMBER = 'ADD_PARTYMEMBER';
+  static readonly REMOVE_PARTYMEMBER = 'REMOVE_PARTYMEMBER';
+  static readonly SCOUT_PARTYMEMBER = 'SCOUT_PARTYMEMBER';
 
   @dispatch()
   addPartymember = (person: Person): PartyAction => ({
     type: PartyActions.ADD_PARTYMEMBER,
     payload: person
-  })
+  });
 
   @dispatch()
   removePartymember = (person: Person): PartyAction => ({
     type: PartyActions.REMOVE_PARTYMEMBER,
     payload: person
-  })
+  });
 
   @dispatch()
   scoutPartymember = (): PartyAction => ({

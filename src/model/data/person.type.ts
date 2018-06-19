@@ -1,9 +1,9 @@
 export class Person {
-  prename: string
-  surname: string
+  prename: string;
+  surname: string;
 
   constructor(prename: string, surname: string) {
-    this.prename = prename
+    this.prename = prename;
     this.surname = surname
   }
 

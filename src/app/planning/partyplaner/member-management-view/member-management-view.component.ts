@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {select} from '@angular-redux/store'
-import {Observable} from 'rxjs/Observable'
 import {getParty} from '../../store/selectors'
 import {Party} from '../../../../model/data/party.type'
 import {Person} from '../../../../model/data/person.type'
 import {PartyActions} from '../../store/actions'
+import {Observable} from 'rxjs/internal/Observable';
 
 @Component({
   moduleId: module.id,
@@ -16,10 +16,10 @@ import {PartyActions} from '../../store/actions'
 export class MemberManagementViewComponent implements OnInit {
 
   @select(getParty)
-  public party: Observable<Party>
+  public party: Observable<Party>;
 
   @Input()
-  public newPartymember: Person
+  public newPartymember: Person;
 
   constructor(private partyActions: PartyActions) {
     this.newPartymember = new Person('', '')
@@ -29,7 +29,7 @@ export class MemberManagementViewComponent implements OnInit {
   }
 
   onAddMember() {
-    this.partyActions.addPartymember(this.newPartymember)
+    this.partyActions.addPartymember(this.newPartymember);
     this.newPartymember = new Person('', '')
   }
 

@@ -99,4 +99,4 @@ export const sampleNames = [
   {'prename': 'Vivien', 'surname': 'Montgomery'},
   {'prename': 'Kaye', 'surname': 'Marshall'},
   {'prename': 'Melissa', 'surname': 'Peck'}
-]
+];

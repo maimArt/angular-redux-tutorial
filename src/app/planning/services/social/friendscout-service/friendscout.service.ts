@@ -1,36 +1,35 @@
 import {Injectable} from '@angular/core'
-import {Observable} from 'rxjs/Observable'
 import {sampleNames} from './samplenames'
 import {Person} from '../../../../../model/data/person.type'
+import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable()
 export class FriendScoutService {
 
-  public static DELAYMS: number = 500
-  public static SCOUT_THRESHOLD: number = 3
-  private scoutCounter: number = 0
+  public static DELAYMS = 500;
+  public static SCOUT_THRESHOLD = 3;
+  private scoutCounter = 0;
 
   constructor() {
   }
 
   findFriend(): Observable<Person> {
-    let thisService = this;
+      const thisService = this;
     return Observable.create(function (observer) {
       if (thisService.scoutCounter < FriendScoutService.SCOUT_THRESHOLD) {
         thisService.incrementCounter();
         setTimeout(function () {
-          let randomIndex = Math.floor(Math.random() * 100)
-          let newPerson = new Person(sampleNames[randomIndex].prename, sampleNames[randomIndex].surname)
+          const randomIndex = Math.floor(Math.random() * 100);
+          const newPerson = new Person(sampleNames[randomIndex].prename, sampleNames[randomIndex].surname);
           observer.next(newPerson)
         }, FriendScoutService.DELAYMS)
       } else {
-        observer.error("Sorry. Cannot find any more friend for you.")
+        observer.error('Sorry. Cannot find any more friend for you.')
       }
     })
   }
 
-  incrementCounter()
-  {
+  incrementCounter() {
     this.scoutCounter++;
   }
 }

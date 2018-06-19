@@ -3,6 +3,7 @@ import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store'
 import {INITIAL_ROOTSTATE, rootReducer, RootState} from './root.reducer'
 import {RootEpics} from './root.epics'
 import {deepFreeze} from 'typescript-immutable-helper'
+import {createEpicMiddleware} from 'redux-observable';
 
 @NgModule({
   imports: [
@@ -13,9 +14,10 @@ import {deepFreeze} from 'typescript-immutable-helper'
 export class StoreModule {
   constructor(store: NgRedux<RootState>,
               devTools: DevToolsExtension, rootEpics: RootEpics) {
-    const middlewares = [...rootEpics.createEpics()]
-    const storeEnhancer = devTools.isEnabled ? [devTools.enhancer()] : []
-    const rootState = isDevMode()? deepFreeze(INITIAL_ROOTSTATE) : INITIAL_ROOTSTATE
+    const epicMiddleware = createEpicMiddleware();
+    const middlewares = [epicMiddleware];
+    const storeEnhancer = devTools.isEnabled ? [devTools.enhancer()] : [];
+    const rootState = isDevMode() ? deepFreeze(INITIAL_ROOTSTATE) : INITIAL_ROOTSTATE;
     //const rootState = INITIAL_ROOTSTATE
 
     store.configureStore(
@@ -24,5 +26,7 @@ export class StoreModule {
       middlewares,
       storeEnhancer
     )
+
+    epicMiddleware.run(rootEpics.createRootEpic())
   }
 }

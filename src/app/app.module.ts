@@ -6,15 +6,14 @@ import {HttpModule} from '@angular/http'
 import {StoreModule} from './shared/store/store.module'
 import {PartyplanerModule} from './planning/partyplaner/partyplaner.module'
 import {FormsModule} from '@angular/forms'
-import {AppRoutingModule} from './app-routing.module';
-import {SimulationModule} from './simulation/simulation.module'
+import {AppRoutingModule} from './app-routing.module'
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRoutingModule, BrowserModule, HttpModule, FormsModule, StoreModule, PartyplanerModule, SimulationModule
+    AppRoutingModule, BrowserModule, HttpModule, FormsModule, StoreModule, PartyplanerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

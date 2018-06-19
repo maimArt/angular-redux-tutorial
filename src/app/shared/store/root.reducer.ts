@@ -5,7 +5,7 @@ import {RouterState} from '@angular/router'
 
 export interface RootState {
   partyplaner: PartyplanerState;
-  router?: RouterState;
+  router?: any;
 }
 
 /* root state should initialy be a plain object */
@@ -16,4 +16,4 @@ export const INITIAL_ROOTSTATE = {
 export const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   partyplaner: partyplanerReducer,
   router: routerReducer
-})
+});

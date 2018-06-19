@@ -14,7 +14,7 @@ export class InitialPartyplanerState implements PartyplanerState{
 }
 
 export const partyplanerReducer: Reducer<PartyplanerState> = (state: PartyplanerState = new InitialPartyplanerState(), action: PartyAction) => {
-  let person: Person = action.payload
+  let person: Person = action.payload;
   switch (action.type) {
     case PartyActions.ADD_PARTYMEMBER:
       if (personIsInList(state.party.members, person)) {
@@ -31,4 +31,4 @@ export const partyplanerReducer: Reducer<PartyplanerState> = (state: Partyplaner
   }
 
   return state
-}
+};
