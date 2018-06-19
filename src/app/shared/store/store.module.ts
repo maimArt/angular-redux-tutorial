@@ -18,7 +18,6 @@ export class StoreModule {
     const middlewares = [epicMiddleware];
     const storeEnhancer = devTools.isEnabled ? [devTools.enhancer()] : [];
     const rootState = isDevMode() ? deepFreeze(INITIAL_ROOTSTATE) : INITIAL_ROOTSTATE;
-    //const rootState = INITIAL_ROOTSTATE
 
     store.configureStore(
       rootReducer,
