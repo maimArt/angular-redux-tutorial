@@ -1,34 +1,37 @@
-import {Reducer} from 'redux'
-import {PartyAction, PartyActions} from './actions'
-import {Person} from '../../../model/data/person.type'
+import {PartyActionsUnion, PartyActionTypes} from './actions'
+import {Person, personIsInList, personsAreEqual} from '../../../model/data/person.type'
 import {Party} from '../../../model/data/party.type'
-import {personIsInList, personsAreEqual} from './selectors'
 import {ReplicationBuilder} from 'typescript-immutable-helper'
+import {ActionReducerMap} from '@ngrx/store';
 
 export interface PartyplanerState {
   party: Party
 }
 
-export class InitialPartyplanerState implements PartyplanerState{
-  party: Party = new Party();
-}
+export const reducers: ActionReducerMap<PartyplanerState> = {
+  party: partyReducer
+};
 
-export const partyplanerReducer: Reducer<PartyplanerState> = (state: PartyplanerState = new InitialPartyplanerState(), action: PartyAction) => {
-  let person: Person = action.payload;
+export function partyReducer(party: Party = new Party(), action: PartyActionsUnion): Party {
   switch (action.type) {
-    case PartyActions.ADD_PARTYMEMBER:
-      if (personIsInList(state.party.members, person)) {
-        return state
+    case PartyActionTypes.ADD_PARTYMEMBER: {
+      const personToAdd: Person = action.payload;
+      if (personIsInList(party.members, personToAdd)) {
+        return party
       } else {
-      return ReplicationBuilder.forObject(state).getChild("party").modify("members").by((members) => [...members, person]).build();
+        return ReplicationBuilder.forObject(party).modify('members').by((members) => [...members, personToAdd]).build();
       }
-    case PartyActions.REMOVE_PARTYMEMBER:
-      if (personIsInList(state.party.members, person)) {
-        return ReplicationBuilder.forObject(state).getChild("party").modify("members").by((members) => members.filter((member) => !personsAreEqual(member, person))).build();
+    }
+
+    case PartyActionTypes.REMOVE_PARTYMEMBER:
+      const personToRemove: Person = action.payload;
+      if (personIsInList(party.members, personToRemove)) {
+        return ReplicationBuilder.forObject(party).modify('members').by((members) => members.filter((member) => !personsAreEqual(member, personToRemove))).build();
       } else {
-        return state
+        return party
       }
   }
 
-  return state
-};
+  return party;
+}
+

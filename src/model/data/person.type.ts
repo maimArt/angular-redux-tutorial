@@ -12,3 +12,11 @@ export class Person {
   }
 }
 
+export function personsAreEqual(person: Person, anotherPerson: Person) {
+  return person.surname === anotherPerson.surname && person.prename === anotherPerson.prename;
+}
+
+export function personIsInList(persons: Person[], person: Person): boolean {
+  return persons.some((member) => personsAreEqual(member, person))
+}
+

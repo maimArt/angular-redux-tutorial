@@ -1,20 +1,8 @@
-import {RootState} from '../../shared/store/root.reducer'
-import {Party} from '../../../model/data/party.type'
-import {PartyplanerState} from './reducer'
-import {Person} from '../../../model/data/person.type'
+import {createFeatureSelector, createSelector} from '@ngrx/store';
+import {featureName} from './feature-definition';
+import {PartyplanerState} from './reducer';
 
-function getPartyplanerState(rootState: RootState): PartyplanerState {
-  return rootState.partyplaner;
-}
+export const selectPartyplanning = createFeatureSelector<PartyplanerState>(featureName);
 
-export function getParty(rootState: RootState): Party {
-  return getPartyplanerState(rootState).party;
-}
+export const selectParty = createSelector(selectPartyplanning, (state: PartyplanerState) => state.party);
 
-export function personsAreEqual(person:Person, anotherPerson:Person) {
-  return person.surname === anotherPerson.surname && person.prename === anotherPerson.prename;
-}
-
-export function personIsInList(persons:Person[], person:Person): boolean{
-    return persons.some((member) => personsAreEqual(member, person))
-}

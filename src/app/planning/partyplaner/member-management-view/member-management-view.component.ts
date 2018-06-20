@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core'
-import {select} from '@angular-redux/store'
-import {getParty} from '../../store/selectors'
 import {Party} from '../../../../model/data/party.type'
 import {Person} from '../../../../model/data/person.type'
-import {PartyActions} from '../../store/actions'
 import {Observable} from 'rxjs/internal/Observable';
+import {select, Store} from '@ngrx/store';
+import {AddPartyMember, RemovePartyMember, ScoutPartyMember} from '../../store/actions';
+import {RootState} from '../../../shared/store/root.reducer';
+import {selectParty} from '../../store/selectors';
 
 @Component({
   moduleId: module.id,
@@ -15,13 +16,13 @@ import {Observable} from 'rxjs/internal/Observable';
 
 export class MemberManagementViewComponent implements OnInit {
 
-  @select(getParty)
-  public party: Observable<Party>;
+  public party$: Observable<Party>;
 
   @Input()
   public newPartymember: Person;
 
-  constructor(private partyActions: PartyActions) {
+  constructor(private store: Store<RootState>) {
+    this.party$ = store.pipe(select(selectParty));
     this.newPartymember = new Person('', '')
   }
 
@@ -29,15 +30,15 @@ export class MemberManagementViewComponent implements OnInit {
   }
 
   onAddMember() {
-    this.partyActions.addPartymember(this.newPartymember);
+    this.store.dispatch(new AddPartyMember(this.newPartymember));
     this.newPartymember = new Person('', '')
   }
 
   onRemoveMember(person: Person) {
-    this.partyActions.removePartymember(person)
+    this.store.dispatch(new RemovePartyMember(person));
   }
 
   onAddScoutedFriend() {
-    this.partyActions.scoutPartymember()
+    this.store.dispatch(new ScoutPartyMember());
   }
 }
