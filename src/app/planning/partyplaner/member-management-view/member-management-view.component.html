@@ -3,39 +3,40 @@
 
   <div class="moduleContent">
     <div class="panel panel-default">
-      <div class="panel-body">
-        <h4>Zur Party hinzufügen</h4>
-        <div class="input-group">
-          <span class="input-group-addon">Vorname</span>
-          <input class="form-control" [(ngModel)]="newPartymember.prename">
-          <span class="input-group-addon">Nachname</span>
-          <input class="form-control" [(ngModel)]="newPartymember.surname">
-          <span class="input-group-btn">
-            <button class="btn btn-success" (click)="onAddMember()"
-                    [disabled]="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen</button>
-          </span>
-        </div>
-        <div>
-          <button style="width: 100%; margin-top: 10px" class="btn btn-danger" (click)="onAddScoutedFriend()">Ich hab
-            keine Freunde. Ich möchte einen Suchen
+      <mat-card>
+        <mat-card-title>Zur Party hinzufügen</mat-card-title>
+        <div class="addPartyMemberForm">
+          <mat-form-field>
+            <input matInput [(ngModel)]="newPartymember.prename" placeholder="Vorname">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="newPartymember.surname" placeholder="Nachname">
+          </mat-form-field>
+
+          <button mat-flat-button color="primary" (click)="onAddMember()"
+                  [disabled]="newPartymember.prename === '' || newPartymember.surname === ''">Hinzufügen
           </button>
+
+          <div>
+            <button mat-flat-button color="accent" style="width: 100%; margin-top: 10px" (click)="onAddScoutedFriend()">
+              Ich habe keine Freunde. Ich möchte einen Suchen
+            </button>
+          </div>
         </div>
-      </div>
+      </mat-card>
     </div>
 
-    <div class="panel panel-default" style="width:auto">
-      <div class="panel-body" style="width: auto">
-        <h4>Party Teilnehmer</h4>
-        <p *ngIf="(party | async).members.length === 0">Noch keine Teilnehmer</p>
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let member of (party | async).members"><span>{{member.prename}} {{member.surname}}</span>
-            <button style="margin-left: 10px" class="btn btn-danger" (click)="onRemoveMember(member)">Ausladen</button>
-          </li>
-        </ul>
-      </div>
-      <div class="panel-footer">
-        Anzahl Teilnehmer: {{(party | async).members.length}}
-      </div>
-    </div>
+    <mat-card>
+      <mat-card-title>Party Teilnehmer</mat-card-title>
+      <p *ngIf="(party$ | async).members.length === 0">Noch keine Teilnehmer</p>
+      <mat-list>
+        <mat-list-item class="list-group-item" *ngFor="let member of (party$ | async).members"><span>{{member.prename}} {{member.surname}}</span>
+          <button mat-stroked-button style="margin-left: 10px" (click)="onRemoveMember(member)">Ausladen</button>
+        </mat-list-item>
+      </mat-list>
+      <p>
+        Anzahl Teilnehmer: {{(party$ | async).members.length}}
+      </p>
+    </mat-card>
   </div>
 </div>

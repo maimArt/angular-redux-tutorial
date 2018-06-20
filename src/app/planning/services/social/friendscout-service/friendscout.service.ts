@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {sampleNames} from './samplenames'
 import {Person} from '../../../../../model/data/person.type'
-import {Observable} from 'rxjs/internal/Observable';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class FriendScoutService {
@@ -14,7 +14,7 @@ export class FriendScoutService {
   }
 
   findFriend(): Observable<Person> {
-      const thisService = this;
+    const thisService = this;
     return Observable.create(function (observer) {
       if (thisService.scoutCounter < FriendScoutService.SCOUT_THRESHOLD) {
         thisService.incrementCounter();
@@ -24,7 +24,7 @@ export class FriendScoutService {
           observer.next(newPerson)
         }, FriendScoutService.DELAYMS)
       } else {
-        observer.error('Sorry. Cannot find any more friend for you.')
+        observer.error('Sorry. Cannot find a friend anymore!')
       }
     })
   }
