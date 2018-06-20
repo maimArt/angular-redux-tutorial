@@ -3,6 +3,8 @@ import {ActionReducerMap, StoreModule} from '@ngrx/store';
 import {RootState} from './root.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../../../environments/environment';
+import {EffectsModule} from '@ngrx/effects';
+import {PartyplanningSideEffects} from '../../planning/store/sideeffects';
 
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<RootState>>('Registered Reducers');
 
@@ -14,9 +16,10 @@ export function getReducers(): ActionReducerMap<RootState> {
   imports: [
     StoreModule.forRoot(REDUCER_TOKEN),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-    })
+        maxAge: 25, // Retains last 25 states
+        logOnly: environment.production, // Restrict extension to log-only mode
+      }),
+      EffectsModule.forRoot([])
   ],
   providers: [{
     provide: REDUCER_TOKEN,
