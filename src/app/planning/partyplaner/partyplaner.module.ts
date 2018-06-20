@@ -7,6 +7,7 @@ import {ActionReducerMap, StoreModule} from '@ngrx/store';
 import * as fromParty from '../store/reducer';
 import {featureName} from '../store/feature-definition';
 import {PartyplanerState} from '../store/reducer';
+import {MatButtonModule, MatCardModule, MatInputModule, MatListModule} from '@angular/material';
 
 export const FEATURE_REDUCER_TOKEN = new InjectionToken<ActionReducerMap<PartyplanerState>>('Partyplaner Reducers');
 
@@ -16,7 +17,8 @@ export function getReducers(): ActionReducerMap<PartyplanerState> {
 
 
 @NgModule({
-  imports: [CommonModule, FormsModule, FriendscoutServiceModule, StoreModule.forFeature(featureName, FEATURE_REDUCER_TOKEN)],
+  imports: [CommonModule, FormsModule, FriendscoutServiceModule, StoreModule.forFeature(featureName, FEATURE_REDUCER_TOKEN),
+    MatButtonModule, MatInputModule, MatCardModule, MatListModule],
   exports: [MemberManagementViewComponent],
   declarations: [MemberManagementViewComponent],
   providers: [{
